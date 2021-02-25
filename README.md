@@ -63,6 +63,7 @@ Cordova 阿里云移动推送插件，现包含`小米`、`华为`、`OPPO`、`V
 为`typescript`大法好添加了`ts`声明,需要的可以根据下列步骤操作
 
 1. 根据上面步骤添加`plugin`
+1. 请切换到**[@ionic-native](https://github.com/TianKong-0512/cordova-plugin-aliyun-push/tree/%40ionic-native)**分支,根据`README.md`操作使用
 
 ### API
 
