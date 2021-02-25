@@ -17,6 +17,10 @@ Cordova 阿里云移动推送插件，现包含`小米`、`华为`、`OPPO`、`V
 
 - 安装插件
 
+  ```本地安装
+    ionic cordova plugin add ***(本地地址) \`
+  ```
+
   ```bash
     ionic cordova plugin add https://github.com/TianKong-0512/cordova-plugin-aliyun-push \
     --variable ANDROID_APP_KEY="***" \
