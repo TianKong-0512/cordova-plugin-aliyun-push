@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
+        // 配置HMS Core SDK的Maven仓地址。
+        maven {
+            url 'https://developer.huawei.com/repo/'
+        }
+        mavenCentral()
+        jcenter()
+        mavenLocal()
+    }
+}
+
+repositories{
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+    }
+    // 配置HMS Core SDK的Maven仓地址。
+    maven {
+        url 'https://developer.huawei.com/repo/'
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:support-compat:27.+'
+
+    implementation 'com.aliyun.ams:alicloud-android-push:3.2.5'
+
+    //华为依赖
+    implementation 'com.aliyun.ams:alicloud-android-third-push-huawei:3.2.5'
+    //小米依赖
+    implementation 'com.aliyun.ams:alicloud-android-third-push-xiaomi:3.2.5'
+    //OPPO依赖
+    implementation 'com.aliyun.ams:alicloud-android-third-push-oppo:3.2.5'
+    //vivo依赖
+    implementation 'com.aliyun.ams:alicloud-android-third-push-vivo:3.2.5'
+    //魅族依赖
+    implementation 'com.aliyun.ams:alicloud-android-third-push-meizu:3.2.5'
+    //谷歌依赖
+    implementation 'com.aliyun.ams:alicloud-android-third-push-fcm:3.2.5'
+
+}
