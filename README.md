@@ -1,24 +1,14 @@
-# cordova-plugin-aliyunpush
+# cordova-plugin-aliyun-push
 
-基于 https://github.com/442623641/cordova-plugin-aliyunpush 修改而来
+基于 https://github.com/log2c/cordova-plugin-log2c-aliyun-push 修改而来
 
-Cordova 阿里云移动推送插件，现只包含`MiPush`、`Huawei`两个厂商辅助通道,`FCM`、`OPPO`等后续再补充
+Cordova 阿里云移动推送插件，现只包含`小米`、`华为`、`OPPO`、`VIVO`、`魅族` 厂商辅助通道
 
 ## 依赖说明
 
 - Android:
 
-  ```groovy
-  dependencies {
-      implementation 'com.aliyun.ams:alicloud-android-push:3.1.6'
-      // 三方辅助通道
-      implementation 'com.aliyun.ams:alicloud-android-third-push:3.0.10@aar'
-      // 华为
-      implementation 'com.aliyun.ams:huawei-push:2.6.3.305'
-      implementation 'com.aliyun.ams:huawei-push-base:2.6.3.305'
-  }
-
-  ```
+  阿里云`2021/01/13`为止最新的依赖
 
 - iOS:
   截止日期`2020/03/05`为止最新的依赖
@@ -28,7 +18,7 @@ Cordova 阿里云移动推送插件，现只包含`MiPush`、`Huawei`两个厂�
 - 安装插件
 
   ```bash
-    cordova plugin add cordova-plugin-aliyun-push \
+    ionic cordova plugin add https://github.com/TianKong-0512/cordova-plugin-aliyun-push \
     --variable ANDROID_APP_KEY="***" \
     --variable ANDROID_APP_SECRET="***" \
     --variable IOS_APP_KEY="***" \
@@ -36,12 +26,18 @@ Cordova 阿里云移动推送插件，现只包含`MiPush`、`Huawei`两个厂�
     --variable HUAWEI_APPID="***" \
     --variable MIPUSH_APPID="***" \
     --variable MIPUSH_APPKEY="***" \
-    --variable CHANNEL_ID="0"
+    --variable VIVOPUSH_APPID="***" \
+    --variable VIVOPUSH_APPKEY="***" \
+    --variable OPPOPUSH_APPKEY="***" \
+    --variable OPPOPUSH_APPSECRET="***" \
+    --variable MZPUSH_APPID="***" \
+    --variable MZPUSH_APPKEY="***" \
+    --variable CHANNEL_ID="1"
   ```
 
   - 注意
     - 将`*`号替换成你自己申请的密钥信息,如无则不填写或保持`*`号(不影响正常运行)
-    - `CHANNEL_ID`对应`Android 8.0`的通知通道,根据实际情况填写(`Android`开发者都懂什么意思)
+    - `CHANNEL_ID`对应`Android 8.0`的通知通道,根据实际情况填写(`Android 8.0`之后必须的通道 id)
 
 - `Android`端配置(必要)
 
@@ -58,23 +54,6 @@ Cordova 阿里云移动推送插件，现只包含`MiPush`、`Huawei`两个厂�
              </edit-config>
              <!-- ↑↑↑↑↑↑↑ 以上内容 ↑↑↑↑↑↑↑ -->
          </platform>
-     ```
-
-  2. 若你已经自定义了`Application`,则只要在你的`Application`中调用
-
-     ```java
-         import static com.alipush.PushUtils.initPushService;
-         //start
-         @Override
-             public void onCreate() {
-                 super.onCreate();
-                 try {
-                     initPushService(this);
-                 } catch (PackageManager.NameNotFoundException e) {
-                     e.printStackTrace();
-                 }
-             }
-         //end
      ```
 
 ## 使用
@@ -156,7 +135,7 @@ Cordova 阿里云移动推送插件，现只包含`MiPush`、`Huawei`两个厂�
     removeAlias: function (alias, successCallback, errorCallback)
 
     /**
-     * 删除别名
+     * 获取别名列表
      * @param  {Function} successCallback 成功回调
      * @param  {Function} errorCallback   失败回调
      * @return {void}
@@ -206,4 +185,4 @@ Cordova 阿里云移动推送插件，现只包含`MiPush`、`Huawei`两个厂�
 
 1. `iOS`无法获取到`Token`
    `Xcode`中确认开启以下两项
-   ![]()
+   ![](https://github.com/TianKong-0512/cordova-plugin-aliyun-push/blob/master/screenshoot/iOS_notification_config.png)
