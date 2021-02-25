@@ -20,6 +20,7 @@ import com.alibaba.sdk.android.push.noonesdk.PushServiceFactory;
 import com.alibaba.sdk.android.push.register.MiPushRegister;
 import com.alibaba.sdk.android.push.register.VivoRegister;
 import com.alibaba.sdk.android.push.register.OppoRegister;
+import com.alibaba.sdk.android.push.register.MeizuRegister;
 
 import org.json.JSONException;
 import org.json.JSONObject;
