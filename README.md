@@ -41,20 +41,20 @@ Cordova 阿里云移动推送插件，现包含`小米`、`华为`、`OPPO`、`V
 
 - `Android`端配置(必要)
 
-    <div style="color:red">**插件默认没有阿里云推送初始化,所以要依据下列两种方式(2选1)进行初始化**</div>
+    <div style="color:red">**插件默认没有阿里云推送初始化,所以要依据下列方式进行初始化**</div>
 
-  1. (**推荐**)在你项目的`config.xml`中添加
+  在你项目的`config.xml`中添加
 
-     ```xml
-         <platform name="android">
-             <!-- ↓↓↓↓↓↓↓ 以下内容 ↓↓↓↓↓↓↓ -->
-             <edit-config file="app/src/mainAndroidManifest.xml" mode="merge" target="manifest/application"
-                     xmlns:android="http://schemas.androidcom/apk/res/android">
-                     <application android:name="com.alipush.PushApplication" />
-             </edit-config>
-             <!-- ↑↑↑↑↑↑↑ 以上内容 ↑↑↑↑↑↑↑ -->
-         </platform>
-     ```
+  ```xml
+      <platform name="android">
+          <!-- ↓↓↓↓↓↓↓ 以下内容 ↓↓↓↓↓↓↓ -->
+          <edit-config file="app/src/mainAndroidManifest.xml" mode="merge" target="manifest/application"
+                  xmlns:android="http://schemas.androidcom/apk/res/android">
+                  <application android:name="com.alipush.PushApplication" />
+          </edit-config>
+          <!-- ↑↑↑↑↑↑↑ 以上内容 ↑↑↑↑↑↑↑ -->
+      </platform>
+  ```
 
 ## 使用
 
