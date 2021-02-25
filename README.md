@@ -2,7 +2,7 @@
 
 基于 https://github.com/log2c/cordova-plugin-log2c-aliyun-push 修改而来
 
-Cordova 阿里云移动推送插件，现只包含`小米`、`华为`、`OPPO`、`VIVO`、`魅族` 厂商辅助通道
+Cordova 阿里云移动推送插件，现包含`小米`、`华为`、`OPPO`、`VIVO`、`魅族` 厂商辅助通道
 
 ## 依赖说明
 
