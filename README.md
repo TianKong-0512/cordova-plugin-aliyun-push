@@ -60,6 +60,11 @@ Cordova 阿里云移动推送插件，现包含`小米`、`华为`、`OPPO`、`V
       </platform>
   ```
 
+## 注意
+
+- `Android`
+  - 杀死 App 点击通知无法打开 APP 的,后端推送时添加 `AndroidExtParameters {open_type:"application"}`
+
 ## 使用
 
 ### `ionic`中使用(可选)
