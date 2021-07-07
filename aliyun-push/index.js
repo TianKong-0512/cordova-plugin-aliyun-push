@@ -71,6 +71,12 @@ var AliyunPushOriginal = /** @class */ (function (_super) {
   AliyunPushOriginal.prototype.listAliases = function () {
     return cordova(this, 'listAliases', {}, arguments);
   };
+  AliyunPush.prototype.syncBadgeNum = function (number) {
+    return cordova(this, 'syncBadgeNum', {}, arguments);
+  };
+  AliyunPush.prototype.setApplicationIconBadgeNumber = function (number) {
+    return cordova(this, 'setApplicationIconBadgeNumber', {}, arguments);
+  };
   AliyunPush.pluginName = 'AliyunPush';
   AliyunPush.plugin = 'cordova-plugin-aliyun-push';
   AliyunPush.pluginRef = 'AliyunPush';

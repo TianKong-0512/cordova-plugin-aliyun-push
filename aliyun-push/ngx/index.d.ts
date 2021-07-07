@@ -46,24 +46,16 @@ export declare class AliyunPush extends IonicNativePlugin {
    * 阿里云推送绑定标签
    * @param tags 标签列表
    */
-  bindTags(
-    target: AliyunPushTarget,
-    tags: string[],
-    alias?: string
-  ): Promise<any>;
+  bindTags(target: AliyunPushTarget, tags: string[], alias?: string): Promise<any>;
   /**
    * 阿里云推送解除绑定标签
    * @param  {string[]} tags  标签列表
    */
-  unbindTags(
-    target: AliyunPushTarget,
-    tags: string[],
-    alias?: string
-  ): Promise<any>;
+  unbindTags(target: AliyunPushTarget, tags: string[], alias?: string): Promise<any>;
   /**
    * 阿里云推送解除绑定标签
    */
-  listTags(): Promise<string[]>;
+  listTags(): Promise<string>;
   /**
    * 没有权限时，请求开通通知权限，其他路过
    * @param  string msg  请求权限的描述信息
@@ -86,6 +78,14 @@ export declare class AliyunPush extends IonicNativePlugin {
   /**
    * 查询已注册别名
    */
-  listAliases(): Promise<string[]>;
+  listAliases(): Promise<any>;
+  /**
+   * 设置ios服务器的角标
+   */
+  syncBadgeNum(number: number): Promise<any>;
+  /**
+   * 设置ios的角标
+   */
+  setApplicationIconBadgeNumber(number: number): Promise<any>;
 }
 export {};
