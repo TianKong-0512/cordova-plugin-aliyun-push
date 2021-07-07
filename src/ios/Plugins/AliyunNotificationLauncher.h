@@ -44,4 +44,6 @@
 
 - (void)listAliases:(void (^)(id result))callback;
 
+- (void)syncBadgeNum:(NSUInteger *)badgeNum andCallback:(void (^)(BOOL result))callback;
+
 @end

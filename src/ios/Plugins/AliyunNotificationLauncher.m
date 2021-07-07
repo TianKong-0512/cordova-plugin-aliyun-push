@@ -349,16 +349,6 @@
 }
 
 
-/* 同步通知角标数到服务端 */
-- (void)syncBadgeNum:(NSUInteger)badgeNum {
-    [CloudPushSDK syncBadgeNum:badgeNum withCallback:^(CloudPushCallbackResult *res) {
-        if (res.success) {
-            NSLog(@"Sync badge num: [%lu] success.", (unsigned long)badgeNum);
-        } else {
-            NSLog(@"Sync badge num: [%lu] failed, error: %@", (unsigned long)badgeNum, res.error);
-        }
-    }];
-}
 
 #pragma mark - 获取设备 id
 - (NSString *)getDeviceId{
@@ -426,6 +416,19 @@
 - (void)removeAlias:(NSString *)alias andCallback:(void (^)(BOOL result))callback{
     [CloudPushSDK removeAlias:alias withCallback:^(CloudPushCallbackResult *res) {
         callback(res.success);
+    }];
+}
+
+
+/* 同步通知角标数到服务端 */
+#pragma mark - 设置角标
+- (void)syncBadgeNum:(NSUInteger)badgeNum andCallback:(void (^)(BOOL result))callback{
+    [CloudPushSDK syncBadgeNum:badgeNum withCallback:^(CloudPushCallbackResult *res) {
+        if (res.success) {
+            NSLog(@"Sync badge num: [%lu] success.", (unsigned long)badgeNum);
+        } else {
+            NSLog(@"Sync badge num: [%lu] failed, error: %@", (unsigned long)badgeNum, res.error);
+        }
     }];
 }
 

@@ -134,6 +134,27 @@ var AliyunPush = {
     this.callNative('listAliases', [], successCallback, errorCallback);
   },
 
+  /**
+   * 设置服务器的角标数量
+   * @param  {string[]} badgeNum        角标数量
+   * @param  {Function} successCallback 成功回调
+   * @param  {Function} errorCallback   失败回调
+   * @return {void}
+   */
+  syncBadgeNum: function (badgeNum, successCallback, errorCallback) {
+    this.callNative('syncBadgeNum', [badgeNum], successCallback, errorCallback);
+  },
+  /**
+   * 设置本地角标的数量数量
+   * @param  {string[]} badgeNum        角标数量
+   * @param  {Function} successCallback 成功回调
+   * @param  {Function} errorCallback   失败回调
+   * @return {void}
+   */
+  setApplicationIconBadgeNumber: function (badgeNum, successCallback, errorCallback) {
+    this.callNative('setApplicationIconBadgeNumber', [badgeNum], successCallback, errorCallback);
+  },
+
   AliyunPush: AliyunPush,
 };
 module.exports = AliyunPush;

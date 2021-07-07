@@ -379,6 +379,35 @@
     }];
 }
 
+- (void)syncBadgeNum:(CDVInvokedUrlCommand*)command{
+    
+    NSString* stringNum = [command.arguments objectAtIndex:0];
+    NSUInteger badgeNum = [stringNum integerValue];
+    
+    [[AliyunNotificationLauncher sharedAliyunNotificationLauncher]
+     syncBadgeNum:badgeNum andCallback:^(BOOL result) {
+        CDVPluginResult *cdvresult;
+
+        if(result){
+            cdvresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        }else{
+            cdvresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+        }
+
+        [self.commandDelegate sendPluginResult:cdvresult callbackId:command.callbackId];
+    }];
+    
+}
+
+- (void)setApplicationIconBadgeNumber:(CDVInvokedUrlCommand*)command{
+    
+    NSString* stringNum = [command.arguments objectAtIndex:0];
+    NSUInteger badgeNum = [stringNum integerValue];
+
+    UIApplication *app=[UIApplication sharedApplication];
+    app.applicationIconBadgeNumber=badgeNum;
+}
+
 
 
 @end

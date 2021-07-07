@@ -70,4 +70,14 @@
  */
 - (void)listAliases:(CDVInvokedUrlCommand*)command;
 
+/**
+ *同步服务器角标
+ */
+- (void)syncBadgeNum:(CDVInvokedUrlCommand*)command;
+
+/**
+ *设置本地器角标
+ */
+- (void)setApplicationIconBadgeNumber:(CDVInvokedUrlCommand*)command;
+
 @end
