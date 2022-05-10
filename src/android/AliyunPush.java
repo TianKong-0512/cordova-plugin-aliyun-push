@@ -25,13 +25,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.alipush.PushApplication.initPush;
+
 /**
  * This class echoes a string called from JavaScript.
  */
 public class AliyunPush extends CordovaPlugin {
 
-    public AliyunPush(){
-        cls=this.getClass();
+    public AliyunPush() {
+        cls = this.getClass();
     }
 
     public static Class<?> cls;
@@ -48,13 +50,6 @@ public class AliyunPush extends CordovaPlugin {
         super.initialize(cordova, webView);
     }
 
-    @Override
-    protected void pluginInitialize() {
-        super.pluginInitialize();
-        if (!isNotificationEnabled(cordova.getContext())) {
-            showRequestNotifyDialog(cordova.getActivity(), null);
-        }
-    }
 
     /**
      * 插件主入口
@@ -73,10 +68,19 @@ public class AliyunPush extends CordovaPlugin {
             }
             ret = true;
         } else if ("isEnableNotification".equalsIgnoreCase(action)) {
-            boolean enable = isNotificationEnabled(cordova.getContext());
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("enable", enable);
-            callbackContext.success(jsonObject);
+            cordova.getThreadPool().execute(() -> {
+                LOG.d(TAG, "PushManager#isEnableNotification");
+                boolean enable = isNotificationEnabled(cordova.getContext());
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("enable", enable);
+                    jsonObject.put("message", "获取成功");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                callbackContext.success(jsonObject);
+            });
+            sendNoResultPluginResult(callbackContext);
             ret = true;
         } else if ("requireNotifyPermission".equalsIgnoreCase(action)) {
             showRequestNotifyDialog(cordova.getActivity(), callbackContext);
@@ -195,21 +199,21 @@ public class AliyunPush extends CordovaPlugin {
             final String alias = args.getString(0);
             cordova.getThreadPool().execute(() -> {
                 LOG.d(TAG, "PushManager#addAlias");
-                 pushService.addAlias(alias, new CommonCallback() {
-                     @Override
-                     public void onFailed(String s, String s1) {
-                         resError(callbackContext, s, s1);
-                     }
+                pushService.addAlias(alias, new CommonCallback() {
+                    @Override
+                    public void onFailed(String s, String s1) {
+                        resError(callbackContext, s, s1);
+                    }
 
-                     @Override
-                     public void onSuccess(String s) {
-                         LOG.d(TAG, "onSuccess:" + s);
-                         callbackContext.success(s);
-                     }
-                 });
+                    @Override
+                    public void onSuccess(String s) {
+                        LOG.d(TAG, "onSuccess:" + s);
+                        callbackContext.success(s);
+                    }
+                });
 
             });
-             sendNoResultPluginResult(callbackContext);
+            sendNoResultPluginResult(callbackContext);
             ret = true;
         } else if ("removeAlias".equalsIgnoreCase(action)) {
             final String alias = args.getString(0);
@@ -247,6 +251,21 @@ public class AliyunPush extends CordovaPlugin {
                     }
                 });
 
+            });
+            sendNoResultPluginResult(callbackContext);
+            ret = true;
+        } else if ("initPush".equalsIgnoreCase(action)){
+            cordova.getThreadPool().execute(() -> {
+                LOG.d(TAG, "PushManager#initPush");
+                initPush("AliyunPush");
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("message", "初始化成功");
+                    jsonObject.put("status", true);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                callbackContext.success(jsonObject);
             });
             sendNoResultPluginResult(callbackContext);
             ret = true;
@@ -338,8 +357,10 @@ public class AliyunPush extends CordovaPlugin {
         final Resources resources = context.getResources();
         final int title = resources.getIdentifier("aliyun_dialog_title", "string", context.getPackageName());
         final int msg = resources.getIdentifier("aliyun_dialog_message", "string", context.getPackageName());
-        final int negativeText = resources.getIdentifier("aliyun_dialog_negative_text", "string", context.getPackageName());
-        final int positiveText = resources.getIdentifier("aliyun_dialog_positive_text", "string", context.getPackageName());
+        final int negativeText = resources.getIdentifier("aliyun_dialog_negative_text", "string",
+                context.getPackageName());
+        final int positiveText = resources.getIdentifier("aliyun_dialog_positive_text", "string",
+                context.getPackageName());
         new AlertDialog.Builder(context)
                 .setTitle(title)
                 .setMessage(msg)

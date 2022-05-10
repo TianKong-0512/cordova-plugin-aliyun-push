@@ -8,7 +8,7 @@ Cordova 阿里云移动推送插件，现包含`小米`、`华为`、`OPPO`、`V
 
 - Android:
 
-  截止日期`2021/01/13`为止最新的依赖
+  截止日期`2022/04/15`为止最新的依赖
 
 - iOS:
   截止日期`2020/03/05`为止最新的依赖
@@ -63,7 +63,14 @@ Cordova 阿里云移动推送插件，现包含`小米`、`华为`、`OPPO`、`V
 ## 注意
 
 - `Android`
+
   - 杀死 App 点击通知无法打开 APP 的,后端推送时添加 `AndroidExtParameters {open_type:"application"}`
+  - 修改 PushApplication.java 中自己应用的包名。
+  - 因为 android 应用商店的隐私协议需要在同意后才能获取 某些信息，所以添加了 initPush 初始化。
+  - 打包报错的需要修改 build.gradle 中 com.android.tools.build:gradle:3.3.3 版本号 3.3.0 是不行，我暂时使用的 3.3.3
+
+- `IOS`
+  - ios 无需调用 initPush 初始化。
 
 ## 使用
 

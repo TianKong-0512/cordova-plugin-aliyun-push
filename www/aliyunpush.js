@@ -42,6 +42,16 @@ var AliyunPush = {
   },
 
   /**
+   * 初始化推送
+   * @param  {Function} successCallback 成功回调
+   * @param  {Function} errorCallback   失败回调
+   * @return {void}
+   */
+  initPush: function (successCallback, errorCallback) {
+    this.callNative('initPush', [], successCallback, errorCallback);
+  },
+
+  /**
    * 获取设备唯一标识deviceId，deviceId为阿里云移动推送过程中对设备的唯一标识（并不是设备UUID/UDID）
    * @param  {Function} successCallback 成功回调
    * @param  {Function} errorCallback   失败回调
@@ -135,7 +145,7 @@ var AliyunPush = {
   },
 
   /**
-   * 设置服务器的角标数量
+   * 设置数量
    * @param  {string[]} badgeNum        角标数量
    * @param  {Function} successCallback 成功回调
    * @param  {Function} errorCallback   失败回调
@@ -145,7 +155,7 @@ var AliyunPush = {
     this.callNative('syncBadgeNum', [badgeNum], successCallback, errorCallback);
   },
   /**
-   * 设置本地角标的数量数量
+   * 设置数量
    * @param  {string[]} badgeNum        角标数量
    * @param  {Function} successCallback 成功回调
    * @param  {Function} errorCallback   失败回调
