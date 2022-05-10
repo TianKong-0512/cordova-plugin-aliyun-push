@@ -1,7 +1,6 @@
 import { __decorate, __extends } from 'tslib';
-import { IonicNativePlugin, cordova, ngModule } from '@ionic-native/core';
+import { IonicNativePlugin, cordova } from '@ionic-native/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 /**
  * 目标类型
  * 详情参考 阿里云移动推送文档
@@ -17,6 +16,9 @@ var AliyunPush = /** @class */ (function (_super) {
   function AliyunPush() {
     return (_super !== null && _super.apply(this, arguments)) || this;
   }
+  AliyunPush.prototype.initPush = function () {
+    return cordova(this, 'initPush', {}, arguments);
+  };
   AliyunPush.prototype.getRegisterId = function () {
     return cordova(this, 'getRegisterId', {}, arguments);
   };
@@ -35,6 +37,9 @@ var AliyunPush = /** @class */ (function (_super) {
   AliyunPush.prototype.listTags = function () {
     return cordova(this, 'listTags', {}, arguments);
   };
+  AliyunPush.prototype.isEnableNotification = function (msg) {
+    return cordova(this, 'isEnableNotification', {}, arguments);
+  };
   AliyunPush.prototype.requireNotifyPermission = function (msg) {
     return cordova(this, 'requireNotifyPermission', {}, arguments);
   };
@@ -48,7 +53,6 @@ var AliyunPush = /** @class */ (function (_super) {
     return cordova(this, 'removeAlias', {}, arguments);
   };
   AliyunPush.prototype.listAliases = function () {
-    console.log('别名列表 badge');
     return cordova(this, 'listAliases', {}, arguments);
   };
   AliyunPush.prototype.syncBadgeNum = function (number) {

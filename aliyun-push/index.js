@@ -38,6 +38,9 @@ var AliyunPushOriginal = /** @class */ (function (_super) {
   function AliyunPushOriginal() {
     return (_super !== null && _super.apply(this, arguments)) || this;
   }
+  AliyunPush.prototype.initPush = function () {
+    return cordova(this, 'initPush', {}, arguments);
+  };
   AliyunPushOriginal.prototype.getRegisterId = function () {
     return cordova(this, 'getRegisterId', {}, arguments);
   };
@@ -56,7 +59,10 @@ var AliyunPushOriginal = /** @class */ (function (_super) {
   AliyunPushOriginal.prototype.listTags = function () {
     return cordova(this, 'listTags', {}, arguments);
   };
-  AliyunPushOriginal.prototype.requireNotifyPermission = function (msg) {
+  AliyunPush.prototype.isEnableNotification = function () {
+    return cordova(this, 'isEnableNotification', {}, arguments);
+  };
+  AliyunPushOriginal.prototype.requireNotifyPermission = function () {
     return cordova(this, 'requireNotifyPermission', {}, arguments);
   };
   AliyunPushOriginal.prototype.onMessage = function () {
@@ -77,6 +83,7 @@ var AliyunPushOriginal = /** @class */ (function (_super) {
   AliyunPush.prototype.setApplicationIconBadgeNumber = function (number) {
     return cordova(this, 'setApplicationIconBadgeNumber', {}, arguments);
   };
+
   AliyunPush.pluginName = 'AliyunPush';
   AliyunPush.plugin = 'cordova-plugin-aliyun-push';
   AliyunPush.pluginRef = 'AliyunPush';

@@ -29,12 +29,14 @@
           }
         ],
         "members": {
+          "initPush": [{ "__symbolic": "method" }],
           "getRegisterId": [{ "__symbolic": "method" }],
           "bindAccount": [{ "__symbolic": "method" }],
           "unbindAccount": [{ "__symbolic": "method" }],
           "bindTags": [{ "__symbolic": "method" }],
           "unbindTags": [{ "__symbolic": "method" }],
           "listTags": [{ "__symbolic": "method" }],
+          "isEnableNotification": [{ "__symbolic": "method" }],
           "requireNotifyPermission": [{ "__symbolic": "method" }],
           "onMessage": [{ "__symbolic": "method" }],
           "addAlias": [{ "__symbolic": "method" }],

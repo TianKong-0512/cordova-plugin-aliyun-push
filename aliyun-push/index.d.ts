@@ -39,6 +39,7 @@ export declare enum AliyunPushTarget {
   ALIAS_TARGET = 3,
 }
 export declare class AliyunPushOriginal extends IonicNativePlugin {
+  initPush(): Promise<string>;
   getRegisterId(): Promise<string>;
   bindAccount(account: string): Promise<any>;
   unbindAccount(): Promise<any>;
@@ -56,6 +57,11 @@ export declare class AliyunPushOriginal extends IonicNativePlugin {
    * 阿里云推送解除绑定标签
    */
   listTags(): Promise<string[]>;
+  /**
+   * 查看是否开启了通知权限
+   * @param  string msg  请求权限的描述信息
+   */
+  isEnableNotification(msg: string): Promise<any>;
   /**
    * 没有权限时，请求开通通知权限，其他路过
    * @param  string msg  请求权限的描述信息
